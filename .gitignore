@@ -1,5 +1,7 @@
 # My own notes
 notes.txt
+*.blend*
+!*.blend
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
