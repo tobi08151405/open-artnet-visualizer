@@ -6,4 +6,7 @@ sock = socket.socket(socket.AF_INET, # Internet
 sock.bind((UDP_IP, UDP_PORT))
 while True:
     data, addr = sock.recvfrom(4576)
-    print("received message:", data)
+    if len(data) == 530:
+        #print("received message:", data)
+        values = data[18:]
+        print(values)
