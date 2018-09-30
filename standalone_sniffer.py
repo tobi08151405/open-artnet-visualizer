@@ -8,5 +8,5 @@ while True:
     data, addr = sock.recvfrom(4576)
     if len(data) == 530:
         #print("received message:", data)
-        values = data[18:]
+        values = [bytes for bytes in data[18:]]
         print(values)
