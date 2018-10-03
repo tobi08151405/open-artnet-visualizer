@@ -1,7 +1,7 @@
 import bpy
 import socket
 
-class ModalTimerOperator(bpy.types.Operator):
+class timed_sniffer(bpy.types.Operator):
     """timed sniffer"""
     bl_idname = "wm.timed_sniffer"
     bl_label = "Timed Sniffer"
@@ -29,8 +29,9 @@ class ModalTimerOperator(bpy.types.Operator):
                     for i in range(len(values)):
                         try:
                             obj = bpy.data.objects["%03d" % (i+1)].children[0]
-                            obj.data.energy = watt * 10 * (values[i] / 255)
-                            print(obj, values[i], obj.data.energy)
+                            obj.data.energy = watt * 10 * (values[i+3] / 255)
+                            obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))
+                            print(obj, values[i], obj.data.energy, obj.data.color)
                         except KeyError:
                             pass
 
@@ -38,7 +39,7 @@ class ModalTimerOperator(bpy.types.Operator):
 
     def execute(self, context):
         wm = context.window_manager
-        self._timer = wm.event_timer_add(0.1, context.window)
+        self._timer = wm.event_timer_add(0.1, window=context.window)
         wm.modal_handler_add(self)
         return {'RUNNING_MODAL'}
 
@@ -48,11 +49,11 @@ class ModalTimerOperator(bpy.types.Operator):
 
 
 def register():
-    bpy.utils.register_class(ModalTimerOperator)
+    bpy.utils.register_class(timed_sniffer)
 
 
 def unregister():
-    bpy.utils.unregister_class(ModalTimerOperator)
+    bpy.utils.unregister_class(timed_sniffer)
 
 
 if __name__ == "__main__":
