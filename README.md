@@ -18,10 +18,8 @@ In the current state it's far away of being able to do so.
 Fixture type | Code
 ------------ | -------------
 Dimmer | ```obj.data.energy = watt * 10 * (values[i] / 255)```
-RGB LED | ```obj.data.energy = watt * 10
-obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))```
-RGB-Dimmer LED | ```obj.data.energy = watt * 10 * (values[i+3] / 255)
-obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))```
+RGB LED | ```obj.data.energy = watt * 10 <br> obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))```
+RGB-Dimmer LED | ```obj.data.energy = watt * 10 * (values[i+3] / 255) <br> obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))```
 
 * The script will use the first spotlight parented to the object with the name of a DMX-channel, with the number displayed in three letters. So DMX-address `1` will be mapped to the object with the name `001`.
 
