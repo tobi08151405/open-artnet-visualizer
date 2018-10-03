@@ -29,8 +29,7 @@ class timed_sniffer(bpy.types.Operator):
                     for i in range(len(values)):
                         try:
                             obj = bpy.data.objects["%03d" % (i+1)].children[0]
-                            obj.data.energy = watt * 10 * (values[i+3] / 255)
-                            obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))
+                            """REPLACE THIS LINE"""
                             print(obj, values[i], obj.data.energy, obj.data.color)
                         except KeyError:
                             pass
