@@ -1,6 +1,7 @@
 import bpy
 import socket
 
+
 class timed_sniffer(bpy.types.Operator):
     """timed sniffer"""
     bl_idname = "wm.timed_sniffer"
@@ -14,24 +15,24 @@ class timed_sniffer(bpy.types.Operator):
             return {'CANCELLED'}
 
         if event.type == 'TIMER':
-            watt = 100
-            UDP_IP = '' #listen to any address
-            UDP_PORT = 6454 #set Artnet port
-            sock = socket.socket(socket.AF_INET, # Internet
-                                socket.SOCK_DGRAM) # UDP
-            sock.bind((UDP_IP, UDP_PORT))
-            data, addr = sock.recvfrom(4576)
-            if len(data) == 530:
-                #print("received message:", data)
-                values = [bytes for bytes in data[18:]]
-                #print(values)
-                for i in range(len(values)):
-                    try:
-                        obj = bpy.data.objects["%03d" % (i+1)].children[0]
-                        """REPLACE THIS LINE"""
-                        print(obj, values[i], obj.data.energy, obj.data.color)
-                    except KeyError:
-                        pass
+            # change theme color, silly!
+                watt = 100
+                UDP_IP = '' #listen to any address
+                UDP_PORT = 6454 #set Artnet port
+                sock = socket.socket(socket.AF_INET, # Internet
+                                  socket.SOCK_DGRAM) # UDP
+                sock.bind((UDP_IP, UDP_PORT))
+                data, addr = sock.recvfrom(4576)
+                if len(data) == 530:
+                    #print("received message:", data)
+                    values = [bytes for bytes in data[18:]]
+                    #print(values)
+                    for i in range(len(values)):
+                        try:
+                            obj = bpy.data.objects["%03d" % (i+1)].children[0]
+                            '''REPLACE THIS LINE'''
+                        except KeyError:
+                            pass
 
         return {'PASS_THROUGH'}
 
@@ -56,3 +57,5 @@ def unregister():
 
 if __name__ == "__main__":
     register()
+    # test call
+    bpy.ops.wm.timed_sniffer()

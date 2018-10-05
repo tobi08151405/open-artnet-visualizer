@@ -16,7 +16,7 @@ for x in range(10):
         for i in range(len(values)):
             try:
                 obj = bpy.data.objects["%03d" % (i+1)].children[0]
-                """REPLACE THIS LINE"""
+                obj.data.energy = watt * 10 * (values[i] / 255)
                 print(obj, values[i], obj.data.energy)
             except KeyError:
                 pass
