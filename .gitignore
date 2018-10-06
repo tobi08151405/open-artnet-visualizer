@@ -2,6 +2,8 @@
 notes.txt
 *.blend*
 !*.blend
+*_dev*
+*.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
