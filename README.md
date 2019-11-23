@@ -13,6 +13,7 @@ In the current state it's far away of being able to do so.
 3. Make sure you are opening the file with the blender version downloaded from above.
 
 ### Use this project
+* First call run the script named create_lamps.py.
 * At this stage the program only allows only **one** type of fixtures. You have to replace the marked line with the correct line(s) shown below.
 
 Fixture type | Code
