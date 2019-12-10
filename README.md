@@ -28,4 +28,4 @@ RGB-Dimmer LED | `obj.data.energy = watt * 10 * (values[i+3] / 255)` <br> `obj.d
 
 * Then the script should pick up all ArtNet traffic on the current network and will render it to the display.
 
-Copyright (C) 2018 Tobias Teichmann <tobias.teichmann@gmx.at>
+Copyright (C) 2018 Tobias Teichmann <tobias@teichmann.top>
