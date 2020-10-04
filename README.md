@@ -8,24 +8,47 @@ In the current state it's far away of being able to do so.
 
 ### Install
 1. Download Blender 2.8x from the [official site](https://builder.blender.org/download/).
-**Note: **this version is still experimental, but the real-time-render-engine is only available in this version.
 2. clone this repository to your computer **OR** just download the `.blend` File.
 3. Make sure you are opening the file with the blender version downloaded from above.
 
 ### Use this project
-* First call run the script named create_lamps.py.
-* At this stage the program only allows only **one** type of fixtures. You have to replace the marked line with the correct line(s) shown below.
+* Switch to the Scene called "Scripting"
+* Run the script "create_lamps.py" (see table below for more info)
+* Change options in "artnet_server.py" (if needed, see below for more info)
+* Run the script "artnet_server.py"
+* Switch back to Scene "Modeling"
+* Switch Viewport shading to "Rendered"
+* Enjoy
+* Exit the script with `ESC` or `RMB`
 
-Fixture type | Code
------------- | -------------
-Dimmer | `obj.data.energy = watt * 10 * (values[i] / 255)`
-RGB LED | `obj.data.energy = watt * 10` <br> `obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))`
-RGB-Dimmer LED | `obj.data.energy = watt * 10 * (values[i+3] / 255)` <br> `obj.data.color = ((values[i] / 255),(values[i+1] / 255),(values[i+2] / 255))`
+<br>
 
-* The script will use the first spotlight parented to the object with the name of a DMX-channel, with the number displayed in three letters. So DMX-address `1` will be mapped to the object with the name `001`.
+Option | value | Notes
+--- | --- | ---
+Starting DMX Address | Starting Address of this lamp | Overlapping Address Spaces are possible, but not two lamps at the same starting position
+Fixturetype | choice from below
+- | `dimmer` | 1 Channel Dimmer
+- | `rgb` | 3 Channels (Red, Green, Blue)
+- | `rgbw` | 4 Channels (Red, Green, Blue, White)
+- | `rgb_dimmer` | 4 Channels (Red, Green, Blue, Master)
+- | `dimmer_rgb` | 4 Channels (Master, Red, Green, Blue)
+- | `uv` | 1 Channel with violet colour preset
+Watts | maximum output energy of the lamp | Tool is calibrated for values >= 100
 
-* Then switch to the Modelling Tab, switch to "Rendered"-View and click `Run Script` in the bottom right corner.
+<br>
 
-* Then the script should pick up all ArtNet traffic on the current network and will render it to the display.
+Option | Explanation | Default Value
+--- | --- | ---
+address | the address the UDP Server binds to `""` will bind to all addresses | `""` (listen on all addresses)
+port | the port the UDP Server binds to | `6454` (standard ArtNet port)
+net | Artnet universe to listen to (currently only one Universe is supported) | `0`
+update_interval | timeout for the UDP Server in seconds | `0.01`
 
-Copyright (C) 2018 Tobias Teichmann <tobias@teichmann.top>
+<br>
+
+### Background Info
+
+* The script will create a csv-file in the same folder as the blend-file and store the fixture mapping in it. It will use the first spotlight parented to the object with the name of a DMX-channel, with the number displayed in three digits. So DMX-address `1` will be mapped to the object with the name `001`.
+
+
+Copyright (C) 2020 Tobias Teichmann <tobias@teichmann.top>
