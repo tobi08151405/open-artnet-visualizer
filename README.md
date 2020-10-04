@@ -27,12 +27,12 @@ Option | value | Notes
 --- | --- | ---
 Starting DMX Address | Starting Address of this lamp | Overlapping Address Spaces are possible, but not two lamps at the same starting position
 Fixturetype | choice from below
-- | `dimmer` | 1 Channel Dimmer
-- | `rgb` | 3 Channels (Red, Green, Blue)
-- | `rgbw` | 4 Channels (Red, Green, Blue, White)
-- | `rgb_dimmer` | 4 Channels (Red, Green, Blue, Master)
-- | `dimmer_rgb` | 4 Channels (Master, Red, Green, Blue)
-- | `uv` | 1 Channel with violet colour preset
+-> | `dimmer` | 1 Channel Dimmer
+-> | `rgb` | 3 Channels (Red, Green, Blue)
+-> | `rgbw` | 4 Channels (Red, Green, Blue, White)
+-> | `rgb_dimmer` | 4 Channels (Red, Green, Blue, Master)
+-> | `dimmer_rgb` | 4 Channels (Master, Red, Green, Blue)
+-> | `uv` | 1 Channel with violet colour preset
 Watts | maximum output energy of the lamp | Tool is calibrated for values >= 100
 
 <br>
